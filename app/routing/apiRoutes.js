@@ -7,8 +7,8 @@ module.exports = function (app) {
     });
 
     //post request. take body from request and push data into `frindsData`.
-    app.post('api/friends', function (req, res) {
+    app.post('/api/newfriends', function (req, res) {
         console.log(req.body);
-    })
+    });
     
 };
