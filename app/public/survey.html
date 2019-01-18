@@ -20,15 +20,15 @@
                         <hr>
                         <h3><strong>About You</strong></h3>
                         <h4>Name (Required)</h4>
-                        <input type="text" id="name" class="form-control" required>
+                        <input type="text" id="name" class="form-control item-required" required>
                         <h4>Link to Photo Image (Required)</h4>
-                        <input type="test" id="photo" class="form-control" required>
+                        <input type="test" id="photo" class="form-control item-required" required>
                         <hr>
 
                         <div class="form-group">
                                 <h3><strong>Question 1</strong></h3>
                                 <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
-                                <select class="form-control col-2" id="q1">
+                                <select class="form-control col-2 item-required" id="q1">
                                         <option value>Select an option</option>
                                         <option value="1">1 (Strongly Agree)</option>
                                         <option value="2">2</option>
@@ -41,7 +41,7 @@
                         <br>
                         <h3><strong>Question 2</strong></h3>
                         <h4>You love to stay up late.</h4>
-                        <select class="form-control col-2" id="q2">
+                        <select class="form-control col-2 item-required" id="q2">
                                 <option value>Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
@@ -52,7 +52,7 @@
                         <br>
                         <h3><strong>Question 3</strong></h3>
                         <h4>Do you like living in ananalog world.</h4>
-                        <select class="form-control col-2" id="q3">
+                        <select class="form-control col-2 item-required" id="q3">
                                 <option value>Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
@@ -63,7 +63,7 @@
                         <br>
                         <h3><strong>Question 4</strong></h3>
                         <h4>you are crazy.</h4>
-                        <select class="form-control col-2" id="q4">
+                        <select class="form-control col-2 item-required" id="q4">
                                 <option value>Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
@@ -74,7 +74,7 @@
                         <br>
                         <h3><strong>Question 5</strong></h3>
                         <h4>You put katchup on everything including icecream.</h4>
-                        <select class="form-control col-2" id="q5">
+                        <select class="form-control col-2 item-required" id="q5">
                                 <option value>Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
@@ -85,7 +85,7 @@
                         <br>
                         <h3><strong>Question 6</strong></h3>
                         <h4>You think your spirit animal is a house cat.</h4>
-                        <select class="form-control col-2" id="q6">
+                        <select class="form-control col-2 item-required" id="q6">
                                 <option value>Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
@@ -96,7 +96,7 @@
                         <br>
                         <h3><strong>Question 7</strong></h3>
                         <h4>Adventure Time is the greatest cartoon ever.</h4>
-                        <select class="form-control col-2" id="q7">
+                        <select class="form-control col-2 item-required" id="q7">
                                 <option value>Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
@@ -107,7 +107,7 @@
                         <br>
                         <h3><strong>Question 8</strong></h3>
                         <h4>If you had a choice between eating pho or mexican you choose Pho.</h4>
-                        <select class="form-control col-2" id="q8">
+                        <select class="form-control col-2 item-required" id="q8">
                                 <option value>Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
@@ -118,8 +118,8 @@
                         <br>
                         <h3><strong>Question 9</strong></h3>
                         <h4>Do you like animals.</h4>
-                        <select class="form-control col-2" id="q9">
-                                <option value>Select an option</option>
+                        <select class="form-control col-2 item-required" id="q9">
+                                <option value="-0">Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -129,8 +129,8 @@
                         <br>
                         <h3><strong>Question 10</strong></h3>
                         <h4>Do you like anal with icecream.</h4>
-                        <select class="form-control col-2" id="q10">
-                                <option value>Select an option</option>
+                        <select class="form-control col-2 item-required" id="q10">
+                                <option value= false>Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -152,7 +152,16 @@
 
 
         <script type="text/javascript">
+                // form validation
+                function validate(name, photo, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) {;
+                        console.log(!name && !photo && !q1 && !q2)
+                        return !name && !photo && !q1 && !q2;
+                }
+
+
+
                 $('#submit').on('click', function (event) {
+
                         event.preventDefault();
                         const newFriend = {
                                 name: $('#name').val().trim(),
@@ -170,7 +179,9 @@
                                         $('#q10').val().trim()
                                 ]
                         };
-
+                        var allTrue = Object.keys(newFriend).every(function(k){ if (newFriend[k] === 'false') {return false} else { return newFriend[k] }});
+                        // var allTrue = Object.keys(newFriend).every(function(k){ return newFriend[k] });
+                        console.log(allTrue)
                         $.post('/api/newfriends', newFriend)
                                 .then(function (data) {
                                         console.log('add from html ', data)
