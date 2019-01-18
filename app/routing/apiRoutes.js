@@ -5,5 +5,10 @@ module.exports = function () {
     app.get('/api/friends' function(req,res) {
         res.json(frindsData);
     });
+
+    //post request. take body from request and push data into `frindsData`.
+    app.post('api/friends' function (req, res) {
+        console.log(req.body);
+    })
     
 };
