@@ -10,7 +10,10 @@ app.use(express.urlencoded(({ extended: true })));
 app.use(express.json());
 
 //point server to routes files
-require('./routing/ipaRoutes')(app);
-require('./routing/htmlRoutes')(app);
+require('./app/routing/apiRoutes')(app);
+require('./app/routing/htmlRoutes')(app);
 
-//LISTENER
+//LISTENER. effectively 'starts' server
+app.listen(PORT, function() {
+    console.log('App listening on PORT: ' + PORT);
+});
