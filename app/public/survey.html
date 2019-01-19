@@ -179,7 +179,8 @@
                                         $('#q10').val().trim()
                                 ]
                         };
-                        var allTrue = Object.keys(newFriend).every(function(k){ if (newFriend[k] === 'false') {return false} else { return newFriend[k] }});
+                        
+                        // var allTrue = Object.keys(newFriend).every(function(k){ if (newFriend[k] === 'false') {return false} else { return newFriend[k] }});
                         // var allTrue = Object.keys(newFriend).every(function(k){ return newFriend[k] });
                         console.log(allTrue)
                         $.post('/api/newfriends', newFriend)
