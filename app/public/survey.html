@@ -128,9 +128,9 @@
                         </select>
                         <br>
                         <h3><strong>Question 10</strong></h3>
-                        <h4>Do you like anal with icecream.</h4>
+                        <h4>Do you like animals with icecream.</h4>
                         <select class="form-control col-2 item-required" id="q10">
-                                <option value= false>Select an option</option>
+                                <option value=false>Select an option</option>
                                 <option value="1">1 (Strongly Agree)</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -180,18 +180,24 @@
                                         $('#q10').val().trim()
                                 ]
                         };
-                        console.log(newFriend.scores[0])
-                function validate2(newfriend) {
-                        for (let i = 0; i < newfriend.scores.length; i++) 
-                        if (newfriend.scores[1] == null) {
-                                console.log(newFriend.scores[0])
-                                return false
+                        // console.log(newFriend.scores[0])
+                        function validate2(newfriend) {
+                                for (let i = 0; i < newfriend.scores.length; i++) {
+                                        console.log('look at this ' + newFriend.scores[i])
+                                        if (!newfriend.scores[i]) return false
+                                                // console.log(newFriend.scores[i]);
+                                                // console.log('inside false')
+                                           
+                                        
+                                }
+                                return true
                         }
-                        return true
-                }
-                        // var allTrue = Object.keys(newFriend).every(function(k){ if (newFriend[k] == null) {return false} else { return newFriend[k] }});
-                        // var allTrue = Object.keys(newFriend).every(function(k){ return newFriend[k] });
-                        // console.log(allTrue)
+
+                        console.log(validate2(newFriend));
+
+
+
+
                         $.post('/api/newfriends', newFriend)
                                 .then(function (data) {
                                         console.log('add from html ', data)
