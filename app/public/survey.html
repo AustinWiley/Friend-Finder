@@ -153,11 +153,12 @@
 
         <script type="text/javascript">
                 // form validation
-                function validate(name, photo, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) {;
-                        console.log(!name && !photo && !q1 && !q2)
-                        return !name && !photo && !q1 && !q2;
-                }
 
+                // function validate(name, photo, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10) {;
+                //         console.log(!name && !photo && !q1 && !q2 && !q3 && q4 && q5 && q6 && q7 && q8 && q8 && q9 && Q10)
+                //         return !name && !photo && !q1 && !q2 && !q3 && q4 && q5 && q6 && q7 && q8 && q8 && q9 && Q10
+                // }
+                // conaole.log(validate(name, photo, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10))
 
 
                 $('#submit').on('click', function (event) {
@@ -167,7 +168,7 @@
                                 name: $('#name').val().trim(),
                                 photo: $('#photo').val().trim(),
                                 scores: [
-                                        $('#q1').val().trim(),
+                                        parseInt($('#q1').val().trim()),
                                         $('#q2').val().trim(),
                                         $('#q3').val().trim(),
                                         $('#q4').val().trim(),
@@ -179,10 +180,18 @@
                                         $('#q10').val().trim()
                                 ]
                         };
-                        
-                        // var allTrue = Object.keys(newFriend).every(function(k){ if (newFriend[k] === 'false') {return false} else { return newFriend[k] }});
+                        console.log(newFriend.scores[0])
+                function validate2(newfriend) {
+                        for (let i = 0; i < newfriend.scores.length; i++) 
+                        if (newfriend.scores[1] == null) {
+                                console.log(newFriend.scores[0])
+                                return false
+                        }
+                        return true
+                }
+                        // var allTrue = Object.keys(newFriend).every(function(k){ if (newFriend[k] == null) {return false} else { return newFriend[k] }});
                         // var allTrue = Object.keys(newFriend).every(function(k){ return newFriend[k] });
-                        console.log(allTrue)
+                        // console.log(allTrue)
                         $.post('/api/newfriends', newFriend)
                                 .then(function (data) {
                                         console.log('add from html ', data)
