@@ -25,7 +25,7 @@
                                         </button>
                                 </div>
                                 <div class="modal-body">
-                                        <p>Please complete all fields.</p>
+                                        <p>Please complete before clicking submit.</p>
                                 </div>
                                 <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -202,19 +202,18 @@
                         console.log(validate2(newFriend));
 
                         if (newFriend.name && newFriend.photo && validate2(newFriend)) {
-                                console.log('YOU DID IT ALL FIELDS AR FILLED OUT!!!!!!!!!!!!!!!!!!!!')
+                                console.log('YOU DID IT ALL FIELDS AR FILLED OUT!!!!!!!!!!!!!!!!!!!!');
+
+                                $.post('/api/newfriend', newFriend)
+                                .then(function (data) {
+                                        console.log('add from html ', data)
+                                });
                         } else {
                                 $('#Modal').modal();
                                 return;     
                         }
 
 
-
-
-                        $.post('/api/newfriends', newFriend)
-                                .then(function (data) {
-                                        console.log('add from html ', data)
-                                });
                 });
 
                 // Closes Modal Alert
