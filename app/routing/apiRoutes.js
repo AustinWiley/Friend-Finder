@@ -11,7 +11,7 @@ module.exports = function (app) {
         console.log(req.body.name);
 
         let myNum = req.body.scores.map(num => parseInt(num));
-        console.log(myNum);
+        console.log(scoreTotal(myNum));
 
 
 
@@ -22,11 +22,10 @@ module.exports = function (app) {
 
     function scoreTotal(scoresArr) {
         var sum = 0;
-        for (var i = 0; i < myNum.length; i++) {
-            sum += myNum[i]
+        for (var i = 0; i < scoresArr.length; i++) {
+            sum += scoresArr[i]
         }
         return sum;
     };
-
 
 };
