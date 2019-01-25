@@ -13,11 +13,6 @@ module.exports = function (app) {
         let myNum = req.body.scores.map(num => parseInt(num));
         console.log(scoreTotal(myNum));
 
-
-
-        // for (let i = 0; i < friendsData.length; i++) {
-
-        // }
     });
 
     function scoreTotal(scoresArr) {
@@ -28,4 +23,12 @@ module.exports = function (app) {
         return sum;
     };
 
+    // use this in post to compare numbers
+    function foo(num1, num2) {
+        if (num1 > num2) return num1 - num2
+        return num2 - num1
+    };
+
+    console.log(foo(1, 8));
+    console.log(foo(8, 1));
 };
