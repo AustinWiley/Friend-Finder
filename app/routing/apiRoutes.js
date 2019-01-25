@@ -14,18 +14,25 @@ module.exports = function (app) {
         // console.log(scoreTotal(myNum));
 
         let myNum = scoreTotal(req.body.scores);
-
         let friendsTotals = [];
+        let diff = [];
+
+        //loop to get friends totals
         for (let i = 0; i < friendsData.length; i++) {
             friendsTotals.push(scoreTotal(friendsData[i].scores))
         };
 
-        let diff = [];
+        //loop for the difference between user scores and friends scores
         for (let j = 0; j < friendsTotals.length; j++) {
             diff.push(foo(friendsTotals[j], myNum))
-        }
-        console.log(friendsTotals);
-        console.log(diff);
+        };
+
+        // console.log('this is your friend' + diff.indexOf(Math.min(diff)));
+        console.log('totals' + friendsTotals);
+        console.log('diff' + diff);
+        console.log('this is friend index ' + diff.indexOf(Math.min(...diff)));
+
+
 
         //after everything
         friendsData.push(req.body)
