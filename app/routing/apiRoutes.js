@@ -35,7 +35,8 @@ module.exports = function (app) {
 
 
         //after everything
-        friendsData.push(req.body)
+        res(true);
+        friendsData.push(req.body);
     });
 
     function scoreTotal(scoresArr) {
