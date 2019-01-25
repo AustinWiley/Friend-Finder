@@ -10,25 +10,44 @@ module.exports = function (app) {
     app.post('/api/newfriend', function (req, res) {
         console.log(req.body.name);
 
-        let myNum = req.body.scores.map(num => parseInt(num));
-        console.log(scoreTotal(myNum));
+        // let myNum = req.body.scores.map(num => parseInt(num));
+        // console.log(scoreTotal(myNum));
 
+        let myNum = scoreTotal(req.body.scores);
+
+        let friendsTotals = [];
+        for (let i = 0; i < friendsData.length; i++) {
+            friendsTotals.push(scoreTotal(friendsData[i].scores))
+        };
+
+        let diff = [];
+        for (let j = 0; j < friendsTotals.length; j++) {
+            diff.push(foo(friendsTotals[j], myNum))
+        }
+        console.log(friendsTotals);
+        console.log(diff);
+
+        //after everything
+        friendsData.push(req.body)
     });
 
     function scoreTotal(scoresArr) {
         var sum = 0;
         for (var i = 0; i < scoresArr.length; i++) {
-            sum += scoresArr[i]
+            sum += parseInt(scoresArr[i])
         }
         return sum;
     };
 
     // use this in post to compare numbers
     function foo(num1, num2) {
+        console.log(typeof num1)
+        console.log(typeof num2)
+        console.log(num2)
         if (num1 > num2) return num1 - num2
         return num2 - num1
     };
 
-    console.log(foo(1, 8));
-    console.log(foo(8, 1));
+    // console.log(foo(1, 8));
+    // console.log(foo(8, 1));
 };
