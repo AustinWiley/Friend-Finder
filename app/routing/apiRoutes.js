@@ -35,7 +35,7 @@ module.exports = function (app) {
 
 
         //after everything
-        res(true);
+        res.json(friendsData[diff.indexOf(Math.min(...diff))]);
         friendsData.push(req.body);
     });
 

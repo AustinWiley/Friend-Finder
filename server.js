@@ -19,12 +19,3 @@ require('./app/routing/htmlRoutes')(app);
 app.listen(PORT, function () {
     console.log('App listening on PORT: ' + PORT);
 });
-
-// use this in post to compare numbers
-function foo(num1, num2) {
-    if (num1 > num2) return num1 - num2
-    return num2 - num1
-}
-
-console.log(foo(1, 8));
-console.log(foo(8, 1));
