@@ -1,7 +1,7 @@
 var friendsArray = [
     {
-        name: "Veronica Vhan",
-        photo: "https://ism2019.org/img/team/placeholder-female.jpg",
+        name: "Neville longbottom",
+        photo: "https://vignette.wikia.nocookie.net/harrypotter/images/1/10/Neville-promo-pics-neville-longbottom-28261912-390-520.jpg/revision/latest/scale-to-width-down/250?cb=20140610141612",
         scores: [
         "5",
         "1",
